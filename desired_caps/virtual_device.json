@@ -1,0 +1,9 @@
+{
+    "platformName": "Android",
+    "appium:platformVersion": "9",
+    "appium:deviceName": "emulator-5554",
+    "appium:appPackage": "com.moovtek.driver.dev",
+    "appium:appActivity": "com.moovtek.driver.dev.MainActivity",
+    "appium:automationName": "UIautomator2",
+    "appium:autoGrantPermissions": "true"
+}
