@@ -2,8 +2,8 @@
     "platformName": "Android",
     "appium:platformVersion": "14",
     "appium:deviceName": "OBSWJNR88PZLLZCQ",
-    "appium:appPackage": "com.moovtek.driver",
-    "appium:appActivity": "com.moovtek.driver.MainActivity",
+    "appium:appPackage": "com.moovtek.driver.dev",
+    "appium:appActivity": "com.moovtek.driver.dev.MainActivity",
     "appium:automationName": "UIautomator2",
     "appium:autoGrantPermissions": "true"
 }

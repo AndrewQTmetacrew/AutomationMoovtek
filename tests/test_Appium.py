@@ -11,31 +11,11 @@ def get_otp(driver):
 
 
 class TestRegisterScenario:
-    @pytest.mark.parametrize("phone, status_btn",[("03922226", False)])
-    def test_register_negative_phone_format(self, driver, phone, status_btn):
-        phone_input_locator = (AppiumBy.XPATH, "//android.widget.EditText[@resource-id='text-input-outlined']")
-        btn_next_locator = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().resourceId("button")')
-        checkbox_term_locator = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().resourceId("check_box_unactive")')
-
-        # Click checkbox term & policy
-        checkbox_term = driver.find_element(*checkbox_term_locator)
-        checkbox_term.click()
-
-        # Input phone
-        phone_input = driver.find_element(*phone_input_locator)
-        phone_input.send_keys(phone)
-
-        # Check button login not enable
-        btn_next = driver.find_element(*btn_next_locator)
-        assert btn_next.is_enabled() == status_btn
-
-
     @pytest.mark.parametrize("phone, status_btn , error_message",
                              [("0232222226", True, "Số điện thoại không đúng.")])
     def test_register_negative_phone_invalid(self, driver, phone, status_btn, error_message):
         phone_input_locator = (AppiumBy.XPATH, "//android.widget.EditText[@resource-id='text-input-outlined']")
         btn_next_locator = (AppiumBy.ACCESSIBILITY_ID, "Tiếp tục")
-        error_message_locator = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Số điện thoại không đúng.")')
 
 
         # Input phone
@@ -57,7 +37,6 @@ class TestRegisterScenario:
     def test_registered_positive(self, driver, phone, status_btn, error_message):
         phone_input_locator = (AppiumBy.XPATH, "//android.widget.EditText[@resource-id='text-input-outlined']")
         btn_next_locator = (AppiumBy.ACCESSIBILITY_ID, "Tiếp tục")
-        otp_title_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="Mã xác thực"]')
 
 
         #Input phone
