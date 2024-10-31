@@ -14,30 +14,32 @@ class LoginRegisterPage(BasePage):
     def __init__(self, driver: webdriver):
         super().__init__(driver)
 
-    def execute_phone_format(self, phone: str):
+    def __input_field_phone(self, phone: str):
         super()._type(self.__PHONE_FIELD, phone)
+
+    def __click_checkbox_uncheck(self):
         super()._click(self.__TERMS_CHECKBOX_UNCHECK)
 
-    def execute_phone_invalid(self, phone: str):
-        super()._type(self.__PHONE_FIELD, phone)
-        super()._click(self.__TERMS_CHECKBOX_UNCHECK)
-        super()._click(self.__NEXT_BUTTON)
-
-    def execute_phone_valid(self, phone: str):
-        super()._type(self.__PHONE_FIELD, phone)
-        super()._click(self.__TERMS_CHECKBOX_UNCHECK)
-
-    def execute_sign_in(self, phone: str):
-        super()._type(self.__PHONE_FIELD, phone)
-        super()._click(self.__TERMS_CHECKBOX_UNCHECK)
-        super()._click(self.__NEXT_BUTTON)
-
-    def uncheck_terms(self):
+    def __click_checkbox_checked(self):
         super()._click(self.__TERMS_CHECKBOX_CHECKED)
 
-    def reset_all(self):
-        super()._clear(self.__PHONE_FIELD)
+    def __click_button_next(self):
+        super()._click(self.__NEXT_BUTTON)
+
+    def reset_checked(self):
         super()._click(self.__TERMS_CHECKBOX_CHECKED)
+
+    def reset_uncheck(self):
+        super()._click(self.__TERMS_CHECKBOX_UNCHECK)
+
+    def execute_phone_checked(self, phone: str):
+        self.__input_field_phone(phone)
+        self.__click_checkbox_uncheck()
+
+    def execute_phone_checked_next(self, phone: str):
+        self.execute_phone_checked(phone)
+        self.__click_button_next()
+
 
     @property
     def button_next_is_enabled(self) -> bool:

@@ -11,9 +11,9 @@ from appium.options.android import UiAutomator2Options
 def driver():
     env = int(os.getenv("ENV"))
     if env == 1:
-        file_path = "E:/ProjectPython/AutomationMoovtek/desired_caps/real_device.json"
+        file_path = "../desired_caps/real_device.json"
     elif env == 2:
-        file_path = "E:/ProjectPython/AutomationMoovtek/desired_caps/virtual_device.json"
+        file_path = "../desired_caps/virtual_device.json"
     else:
         file_path = True
         pytest.fail("Unsupported device")

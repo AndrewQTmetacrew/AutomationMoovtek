@@ -31,6 +31,9 @@ class BasePage:
         self._wait_until_element_visible(locator, time)
         self._find(locator).clear()
 
+    def _system_back(self):
+        self._driver.back()
+
     def is_displayed(self, locator: tuple[str,str]) -> bool:
         try:
             return self._find(locator).is_displayed()

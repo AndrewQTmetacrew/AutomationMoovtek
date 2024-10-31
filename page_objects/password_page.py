@@ -3,10 +3,9 @@ from appium import webdriver
 
 from page_objects.base_page import BasePage
 
-
-class OTPPage(BasePage):
-    __OTP_TITLE = (AppiumBy.XPATH, '//android.widget.TextView[@text="Mã xác thực"]')
+class PasswordPage(BasePage):
     __BACK_BUTTON = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().className("com.horcrux.svg.SvgView").instance(0)')
+    __PASSWORD_TITLE = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Mật khẩu")')
 
 
     def __init__(self, driver: webdriver):
@@ -14,9 +13,7 @@ class OTPPage(BasePage):
 
     def back(self):
         super()._click(self.__BACK_BUTTON)
-        super()._click(self.__BACK_BUTTON)
 
     @property
     def header(self) -> str:
-        return super().get_text(self.__OTP_TITLE)
-
+        return super().get_text(self.__PASSWORD_TITLE)
