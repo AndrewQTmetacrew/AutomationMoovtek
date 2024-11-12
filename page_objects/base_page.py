@@ -1,3 +1,4 @@
+import pytest
 from appium import webdriver
 from appium.webdriver import WebElement
 from selenium.common import NoSuchElementException
@@ -7,6 +8,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 class BasePage:
     def __init__(self, driver: webdriver):
         self._driver = driver
+
+    def _change_app(self, package: str):
+        self._driver.activate_app(package)
 
     def _wait_until_element_visible(self, locator: tuple[str,str], time: int = 10):
         wait = WebDriverWait(self._driver, time)

@@ -5,5 +5,5 @@
     "appium:appPackage": "com.moovtek.driver.dev",
     "appium:appActivity": "com.moovtek.driver.dev.MainActivity",
     "appium:automationName": "UIautomator2",
-    "appium:autoGrantPermissions": "true"
+    "appium:autoGrantPermissions": true
 }

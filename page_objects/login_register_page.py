@@ -11,9 +11,7 @@ class LoginRegisterPage(BasePage):
     __TERMS_CHECKBOX_CHECKED = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().resourceId("check_box_active")')
     __NEXT_BUTTON = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().resourceId("button")')
 
-    def __init__(self, driver: webdriver):
-        super().__init__(driver)
-
+    #Prepare
     def __input_field_phone(self, phone: str):
         super()._type(self.__PHONE_FIELD, phone)
 
@@ -26,6 +24,7 @@ class LoginRegisterPage(BasePage):
     def __click_button_next(self):
         super()._click(self.__NEXT_BUTTON)
 
+    #Action methods
     def reset_checked(self):
         super()._click(self.__TERMS_CHECKBOX_CHECKED)
 
@@ -40,12 +39,10 @@ class LoginRegisterPage(BasePage):
         self.execute_phone_checked(phone)
         self.__click_button_next()
 
-
     @property
     def button_next_is_enabled(self) -> bool:
         return super().is_enabled(self.__NEXT_BUTTON)
 
     @property
     def error_message_text(self) -> str:
-        return super().get_text(self.__ERROR_MESSAGE,3)
-
+        return super().get_text(self.__ERROR_MESSAGE, 3)
