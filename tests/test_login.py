@@ -7,6 +7,7 @@ from page_objects.password_page import PasswordPage
 @pytest.mark.name("Login test")
 @pytest.mark.category("Login/Register Tests")
 @pytest.mark.description("This test verifies login")
+@pytest.mark.run
 @pytest.mark.order(2)
 class TestLoginScenario:
     def test_positive_login(self, driver):

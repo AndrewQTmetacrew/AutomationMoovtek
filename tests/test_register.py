@@ -13,7 +13,6 @@ from page_objects.password_page import PasswordPage
 @pytest.mark.name("Register test")
 @pytest.mark.category("Login/Register Tests")
 @pytest.mark.description("This test verifies register")
-@pytest.mark.run
 @pytest.mark.order(2)
 class TestRegisterScenario:
     def test_positive_register(self, driver):
@@ -21,7 +20,7 @@ class TestRegisterScenario:
         registered = OTPPage(driver)
 
         # Type phone, checked term & policy, click next button
-        positive_register.execute_phone_checked_next("0861230005")
+        positive_register.execute_phone_checked_next("0393535696")
 
         # Verify header OTP page
         assert registered.header == "Mã xác thực"
@@ -43,8 +42,15 @@ class TestRegisterScenario:
     @pytest.mark.skipif(os.getenv("is_zalo") == "False", reason="is_zalo is false")
     def test_get_otp_from_zalo(self, driver):
         registered = OTPPage(driver)
+        password = CreatePasswordPage(driver)
 
         otp_code = registered.get_otp_code_form_zalo
+
+        # Input OTP code
+        registered._input_correct_otp(otp_code)
+
+        # Verify success
+        assert password.header_text == "Thiết lập mật khẩu"
 
     def negative_otp_code(self, driver):
         otp = OTPPage(driver)

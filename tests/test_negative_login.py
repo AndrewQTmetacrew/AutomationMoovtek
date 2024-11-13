@@ -1,8 +1,9 @@
 import pytest
 
 from page_objects.login_register_page import LoginRegisterPage
-
-class TestLoginRegisterScenario:
+@pytest.mark.run
+@pytest.mark.order(1)
+class TestNegativeLoginRegisterScenario:
     @pytest.mark.name("Login and register with an incorrect phone number format")
     @pytest.mark.category("Login/Register Tests")
     @pytest.mark.description("This test verifies the behavior when an incorrect phone number format is entered.")
